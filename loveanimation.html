@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You ♥</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .message-container, .animation-container {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .message-container.active {
+            display: flex;
+        }
+
+        .animation-container.active {
+            display: flex;
+        }
+
+        .heart {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: #ff0055;
+            transform: rotate(-45deg);
+            animation: pulse 2s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #ff0055;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 50px;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1) rotate(-45deg);
+                box-shadow: 0 0 20px #ff66b2, 0 0 40px #ff66b2, 0 0 60px #ff66b2;
+            }
+            50% {
+                transform: scale(1.2) rotate(-45deg);
+                box-shadow: 0 0 30px #ff66b2, 0 0 60px #ff66b2, 0 0 90px #ff66b2;
+            }
+        }
+
+        .kind-message {
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        .animation-message {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            animation: fadeIn 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0.5;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 14px;
+            color: #ff66b2;
+            font-style: italic;
+            animation: glowFooter 2s infinite;
+        }
+
+        @keyframes glowFooter {
+            0%, 100% {
+                text-shadow: 0 0 10px #ff66b2, 0 0 20px #ff66b2;
+            }
+            50% {
+                text-shadow: 0 0 15px #ff66b2, 0 0 30px #ff66b2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container active" id="message-container">
+        <div class="kind-message">
+            Hey Beautiful, <br>
+            You are the kindest, most wonderful person I've ever known. <br>
+            Your smile lights up my world, and your heart inspires me every day. <br>
+            You’re truly one of a kind. 💖
+        </div>
+    </div>
+
+    <div class="animation-container" id="animation-container">
+        <div>
+            <div class="heart"></div>
+            <div class="animation-message">I Love You  ❤️</div>
+            <p class="footer">Your Man: Riches Lomel</p>
+        </div>
+    </div>
+
+    <script>
+        // Wait for 5 seconds, then show the animation
+        setTimeout(() => {
+            document.getElementById('message-container').classList.remove('active');
+            document.getElementById('animation-container').classList.add('active');
+        }, 5000);
+    </script>
+</body>
+</html>
